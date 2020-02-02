@@ -1,0 +1,29 @@
+{
+  "title": "90's T-Shirt",
+  "name": "90s-tshirt",
+  "description": "This dark but soft theme was inspired by an old t-shirt from the 90's.",
+  "homepage": "https://github.com/kittender/90s-tshirt",
+  "version": "1.0.0",
+  "author": "kittender <kittender@vivaldi.net> (https://github.com/kittender/)",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kittender/90s-tshirt.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "brackets": ">=0.42.0"
+  },
+  "theme": {
+    "file": "main.less",
+    "dark": true,
+    "addModeClass": true
+  },
+  "keywords": [
+        "dark",
+        "soft",
+        "theme",
+        "90s",
+        "pastel",
+        "colorful"
+    ]
+}

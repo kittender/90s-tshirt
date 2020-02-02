@@ -1,0 +1,545 @@
+// Copyright (c) 2014 - present Adobe Systems Incorporated. All rights reserved.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the "Software"),
+// to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+// and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
+
+// Style definitions are from
+// https://github.com/chriskempson/tomorrow-theme/tree/master/Brackets
+
+/*
+ * Brackets Default Theme
+ *
+ * Defines all the variables that one can configure in a theme. This should
+ * contain all variables / mixins for UI styling that we want to be able to
+ * change in a theme.
+ *
+ * Throughout the rest of the LESS files we should _only_ use color
+ * variable names that are on the LHS of the list below. So, if we
+ * need a new color for some UI element, we should add a variable
+ * in this file.
+ */
+
+// These colors are specific to the theme.
+
+@very-light-gray: #efefef;
+@light-gray: #bbc6ab;
+@gray: #949e87;
+@dark-gray: #727a68;
+@very-dark-gray: #494f43;
+@black: #111;
+
+@purple: #a88ed5;
+@blue: #36a1db;
+@light-blue: lighten(@blue, 20%);
+@green: #75d8b7;
+@bright-green: springgreen;
+@yellow: #f7ff68;
+@red: #ce657a;
+@pink: #e0a3af;
+@dark-pink: darken(@pink, 5%);
+
+// This defines all syntax variables that syntax themes must implement when they
+// include a syntax-variables.less file.
+
+// General colors
+@syntax-text-color: @very-light-gray;
+@syntax-selection-color: darken(@very-dark-gray, 10%);
+@syntax-background-color: darken(@very-dark-gray, 5%);
+@syntax-gutter-text-color: @gray;
+@syntax-gutter-background-color: @very-dark-gray;
+@syntax-gutter-background-color-selected: darken(@very-dark-gray, 10%);
+
+
+/* Editor Styling */
+
+.CodeMirror,
+.CodeMirror-scroll {
+  background-color: @syntax-background-color;
+  color: @syntax-text-color;
+}
+
+.CodeMirror-focused .CodeMirror-activeline-background {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.show-line-padding .CodeMirror-focused .CodeMirror-activeline-background {
+  box-shadow: inset 15px 0 0 0 @syntax-selection-color;
+}
+
+.CodeMirror-focused .CodeMirror-activeline {
+  .CodeMirror-gutter-elt {
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+
+    &:first-child::before {
+      content: "\2728";
+      position: absolute;
+      left: 0;
+      color: @gray;
+    }
+  }
+
+  .inline-widget .CodeMirror-gutter-elt {
+    color: #767676;
+  }
+}
+
+
+/* Code Styling */
+
+.cm-atom {
+  color: @yellow;
+}
+
+.cm-string {
+  color: @green;
+}
+
+.cm-string-2 {
+  color: @bright-green;
+}
+
+.cm-hr {
+  color: @yellow;
+}
+
+.cm-number {
+  color: @bright-green;
+  font-weight: bold;
+}
+
+.cm-attribute {
+  color: @green;
+}
+
+.cm-plus {
+  color: @green;
+}
+
+.cm-def {
+  color: @light-blue;
+}
+
+.cm-property {
+  color: @light-blue;
+}
+
+.cm-operator {
+  color: @red;
+}
+
+
+.cm-meta {
+  color: @purple;
+}
+
+.cm-variable {
+  color: @pink;
+}
+
+.cm-variable-2 {
+  color: hotpink;
+}
+
+.cm-variable-3 {
+  color: deeppink;
+}
+
+.cm-bracket {
+  color: @pink;
+}
+
+.cm-type {
+  color: @red;
+}
+
+.cm-comment {
+  color: @gray;
+}
+
+.cm-minus {
+  color: #dc322f;
+}
+
+.cm-header {
+  color: #d85896;
+}
+
+.cm-link {
+  color: @light-blue;
+  text-decoration: none;
+}
+
+.cm-rangeinfo {
+  color: #6c71c4;
+}
+
+.cm-keyword {
+  color: @blue;
+}
+
+.cm-qualifier {
+  color: @light-blue;
+}
+
+.cm-builtin {
+  color: @yellow;
+  font-weight: bold;
+}
+
+.cm-tag {
+  color: @pink;
+}
+
+.cm-quote {
+  color: @purple;
+}
+
+.cm-error {
+  background-color: rgba(255, 0, 100, 0.15);
+
+  &::before {
+    content: "\2620";
+    color: deeppink;
+  }
+}
+
+// HTML / XML
+.cm-m-xml {
+  color: @yellow;
+
+  &.cm-comment {
+    color: @light-gray;
+  }
+
+  &.cm-meta {
+    color: @purple;
+  }
+
+  &.cm-tag {
+    color: @pink;
+
+    &.cm-bracket {
+      color: @dark-pink;
+    }
+  }
+
+  &.cm-attribute {
+    color: @light-blue;
+
+    & + .cm-m-xml {
+      color: @blue;
+    }
+  }
+
+  &.cm-string {
+    color: @green;
+  }
+
+}
+
+// CSS
+.cm-m-css {
+  &.cm-def {
+    color: @bright-green;
+  }
+
+  &.cm-meta {
+    color: palevioletred;
+  }
+
+  &.cm-atom {
+    color: @pink;
+  }
+
+  &.cm-tag {
+    color: @blue;
+    font-weight: bold;
+  }
+
+  &.cm-qualifier {
+    color: @yellow;
+  }
+
+  &.cm-property {
+    color: @light-blue;
+  }
+
+  &.cm-number {
+    color: @red;
+  }
+
+  &.cm-variable-2 {
+    color: lightseagreen;
+  }
+
+  &.cm-variable-3 {
+    color: @purple;
+    background-color: rgba(255, 0, 255, 0.05);
+  }
+}
+
+// Javascript
+.cm-m-javascript {
+  &.cm-def {
+    color: @yellow;
+  }
+
+  &.cm-keyword {
+    color: @blue;
+    font-weight: bold;
+  }
+
+  &.cm-property {
+    color: @pink;
+  }
+
+  &.cm-variable {
+    color: @light-blue;
+  }
+
+  &.cm-number {
+    color: @green;
+  }
+}
+
+// Gherkin
+.cm-m-gherkin {
+
+  &.cm-header {
+    font-weight: bold;
+    border-bottom: 1px solid;
+  }
+  
+  &.cm-variable {
+    color: @blue;
+    background-color: rgba(0,0,0,0.15);
+  }
+
+  &.cm-keyword {
+    color: @bright-green;
+  }
+
+  &.cm-string {
+    color: @yellow;
+  }
+}
+
+// C-like
+.cm-m-clike {
+  &.cm-keyword {
+    font-weight: bold;
+  }
+
+  &.cm-type {
+    font-weight: bold;
+  }
+
+  &.cm-operator {
+    color: @yellow;
+  }
+}
+
+// Markdown
+.cm-m-markdown {
+
+  &.cm-variable-2 {
+    color: @pink;
+  }
+
+  &.cm-header {
+    font-weight: bold;
+    border-bottom: 1px solid;
+  }
+
+  &.cm-header-1 {
+    color: @bright-green;
+  }
+
+  &.cm-header-2 {
+    color: @yellow;
+    border: none;
+  }
+
+  &.cm-header-3 {
+    color: hotpink;
+    font-weight: normal;
+  }
+
+  &.cm-header-4 {
+    color: @dark-pink;
+  }
+
+  &.cm-header-5 {
+    color: @blue;
+  }
+
+  &.cm-header-6 {
+    color: skyblue;
+  }
+
+  &.cm-link {
+    color: @light-blue;
+  }
+
+  &.cm-url {
+    color: @green;
+  }
+
+  &.cm-strong {
+    color: @purple;
+    font-weight: bold;
+  }
+
+  &.cm-em {
+    color: @blue;
+    font-weight: bold;
+  }
+}
+
+/* Extra CSS */
+
+.CodeMirror-searching {
+  background-color: @bright-green  !important;
+
+  &.searching-current-match {
+    background-color: @yellow  !important;
+
+    &::before {
+      content: "\279C";
+    }
+  }
+}
+
+
+.CodeMirror-cursor {
+  border-left: 1px solid black !important;
+}
+
+.CodeMirror-gutters {
+  background-color: @syntax-gutter-background-color;
+  border-right: none;
+}
+
+.CodeMirror-linenumber {
+  color: @syntax-gutter-text-color;
+}
+
+.CodeMirror .CodeMirror-selected {
+  background: #333f48;
+}
+
+.CodeMirror-focused .CodeMirror-selected {
+  background: @syntax-selection-color;
+}
+
+.CodeMirror-matchingbracket {
+  /* Ensure visibility against gray inline editor background */
+  background-color: @yellow;
+  color: @black  !important;
+  font-weight: bold;
+}
+
+.CodeMirror-matchingtag {
+  /* Ensure visibility against gray inline editor background */
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.CodeMirror-overwrite .CodeMirror-cursor {
+  border-left: none !important;
+  border-bottom: 1px solid #fff;
+}
+
+/*
+    CodeMirror's use of descendant selectors for certain styling causes problems when editors are
+    nested because, for items in the inner editor, the left-hand clause in the selector will now
+    match either the actual containing CodeMirror instance *OR* the outer "host" CodeMirror instance.
+
+    TODO (issue #324): We'll still have problems if editors can be nested more than one level deep,
+    or if any other descendant-selector-driven CM styles can differ between inner & outer editors
+    (potential problem areas include line wrap and coloring theme: basically, anything in codemirror.css
+    that uses a descandant selector where the CSS class name to the left of the space is something
+    other than a vanilla .CodeMirror)
+ */
+.CodeMirror {
+  .CodeMirror {
+    background: transparent;
+  }
+
+  .CodeMirror .CodeMirror-gutters {
+    background: transparent;
+    border-right: none;
+  }
+
+  .CodeMirror .CodeMirror-activeline-background {
+    background: transparent;
+  }
+
+  .CodeMirror .CodeMirror-activeline .CodeMirror-gutter-elt {
+    background: transparent;
+    color: #767676;
+  }
+
+  .CodeMirror-focused .CodeMirror-activeline-background {
+    background: #2f2f2f;
+  }
+
+  .CodeMirror-focused .CodeMirror-activeline {
+    .CodeMirror-gutter-elt {
+      background: rgba(0, 0, 0, 0.2);
+      color: #fff;
+    }
+  }
+}
+
+.CodeMirror-foldgutter-open:after {
+  color: @syntax-gutter-text-color;
+}
+
+.CodeMirror-foldgutter-folded:after {
+  color: @dark-gray;
+}
+
+.CodeMirror-line {
+  padding: 1px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.CodeMirror.over-gutter,
+.CodeMirror-activeline {
+  .CodeMirror-foldgutter-open:after {
+    color: @light-gray;
+  }
+}
+
+.CodeMirror-foldmarker {
+  border-color: @dark-gray;
+  color: @gray;
+  background-color: @syntax-gutter-background-color-selected;
+}
+
+/* Non-editor styling */
+
+.image-view,
+.not-editor {
+  background-color: @syntax-background-color;
+}
+
+.view-pane .image-view {
+  color: @syntax-text-color;
+}
